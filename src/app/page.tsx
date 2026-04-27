@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CalendarDays, Mail, MapPin, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  Mail,
+  MapPin,
+  Phone,
+  Ticket,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -31,7 +38,7 @@ export default function HomePage() {
         className="grain relative isolate min-h-[calc(100vh-4.75rem)] overflow-hidden bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(5,16,13,0.86), rgba(5,16,13,0.46)), url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1800&q=85')",
+            "linear-gradient(90deg, rgba(5,16,13,0.86), rgba(5,16,13,0.46)), url('https://images.unsplash.com/photo-1651514645933-c26e0eb4ace3?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_18%,rgba(245,210,123,0.28),transparent_22rem)]" />
@@ -122,48 +129,85 @@ export default function HomePage() {
               description="Each session belongs to a larger project, keeping the work focused while making it easy for new volunteers to join."
             />
           </Reveal>
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {upcomingSessions.map((session, index) => {
-              const project = getProjectForSession(session);
-              const date = dateFormatter.format(new Date(session.date));
-              const [month = "", day = ""] = date.split(" ");
+          {upcomingSessions.length > 0 ? (
+            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+              {upcomingSessions.map((session, index) => {
+                const project = getProjectForSession(session);
+                const date = dateFormatter.format(new Date(session.date));
+                const [month = "", day = ""] = date.split(" ");
 
-              return (
-                <Reveal key={session.id} delay={index * 0.08}>
-                  <Card className="relative overflow-hidden p-6">
-                    <div className="bg-secondary/70 absolute top-0 right-0 h-32 w-32 rounded-bl-[4rem]" />
-                    <div className="relative flex flex-col gap-6 sm:flex-row">
-                      <div className="bg-primary text-primary-foreground shadow-primary/20 grid h-32 w-32 shrink-0 place-items-center rounded-[2rem] shadow-xl">
-                        <div className="text-center">
-                          <span className="block text-sm font-black tracking-[0.3em] uppercase">
-                            {month}
-                          </span>
-                          <span className="font-display text-5xl font-black">
-                            {day}
-                          </span>
+                return (
+                  <Reveal key={session.id} delay={index * 0.08}>
+                    <Card className="relative overflow-hidden p-6">
+                      <div className="bg-secondary/70 absolute top-0 right-0 h-32 w-32 rounded-bl-[4rem]" />
+                      <div className="relative flex flex-col gap-6 sm:flex-row">
+                        <div className="bg-primary text-primary-foreground shadow-primary/20 grid h-32 w-32 shrink-0 place-items-center rounded-[2rem] shadow-xl">
+                          <div className="text-center">
+                            <span className="block text-sm font-black tracking-[0.3em] uppercase">
+                              {month}
+                            </span>
+                            <span className="font-display text-5xl font-black">
+                              {day}
+                            </span>
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-accent text-sm font-bold tracking-[0.2em] uppercase">
+                            {project?.title ?? "EHeros Project"}
+                          </p>
+                          <h3 className="font-display mt-3 text-3xl font-black tracking-tight">
+                            {session.title}
+                          </h3>
+                          <p className="text-muted-foreground mt-3 leading-7">
+                            {session.description}
+                          </p>
+                          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-bold">
+                            <p className="inline-flex items-center gap-2">
+                              <MapPin className="text-accent h-4 w-4" />
+                              {session.location}
+                            </p>
+                            <Link
+                              href={session.registrationUrl ?? "#contact"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary hover:text-accent inline-flex items-center gap-2 transition-colors"
+                            >
+                              <Ticket className="h-4 w-4" />
+                              Register
+                            </Link>
+                          </div>
                         </div>
                       </div>
-                      <div>
-                        <p className="text-accent text-sm font-bold tracking-[0.2em] uppercase">
-                          {project?.title ?? "EHeros Project"}
-                        </p>
-                        <h3 className="font-display mt-3 text-3xl font-black tracking-tight">
-                          {session.title}
-                        </h3>
-                        <p className="text-muted-foreground mt-3 leading-7">
-                          {session.description}
-                        </p>
-                        <p className="mt-5 inline-flex items-center gap-2 text-sm font-bold">
-                          <MapPin className="text-accent h-4 w-4" />
-                          {session.location}
-                        </p>
-                      </div>
+                    </Card>
+                  </Reveal>
+                );
+              })}
+            </div>
+          ) : (
+            <Reveal>
+              <Card className="mt-12 overflow-hidden p-8">
+                <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                  <div className="flex gap-5">
+                    <div className="bg-primary/10 text-primary grid h-14 w-14 shrink-0 place-items-center rounded-2xl">
+                      <CalendarDays className="h-6 w-6" />
                     </div>
-                  </Card>
-                </Reveal>
-              );
-            })}
-          </div>
+                    <div>
+                      <h3 className="font-display text-2xl font-black tracking-tight">
+                        No upcoming sessions right now.
+                      </h3>
+                      <p className="text-muted-foreground mt-2 max-w-2xl leading-7">
+                        We are planning the next round of EHeros sessions. Check
+                        back soon or contact us to hear when registration opens.
+                      </p>
+                    </div>
+                  </div>
+                  <Button asChild variant="secondary">
+                    <Link href="#contact">Get notified</Link>
+                  </Button>
+                </div>
+              </Card>
+            </Reveal>
+          )}
         </div>
       </section>
 

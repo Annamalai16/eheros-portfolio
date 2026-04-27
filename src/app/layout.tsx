@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Fraunces, Libre_Franklin } from "next/font/google";
+import { Manrope, Public_Sans } from "next/font/google";
 
 import { Navbar } from "@/components/site/navbar";
 import { ThemeProvider } from "@/components/site/theme-provider";
@@ -13,15 +13,15 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const fraunces = Fraunces({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  weight: ["600", "700", "800", "900"],
+  variable: "--font-manrope",
+  weight: ["600", "700", "800"],
 });
 
-const libre = Libre_Franklin({
+const publicSans = Public_Sans({
   subsets: ["latin"],
-  variable: "--font-libre",
+  variable: "--font-public-sans",
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${libre.variable}`}
+      className={`${manrope.variable} ${publicSans.variable}`}
       suppressHydrationWarning
     >
       <body>

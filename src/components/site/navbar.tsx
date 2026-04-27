@@ -33,7 +33,7 @@ export function Navbar() {
           </span>
           <span className="leading-tight">
             <span className="font-display block text-xl font-black tracking-tight">
-              EHeroes
+              EHeros
             </span>
             <span className="text-muted-foreground block text-xs font-semibold tracking-[0.24em] uppercase">
               Community in action

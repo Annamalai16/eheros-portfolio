@@ -10,6 +10,7 @@ export type Session = {
   description: string;
   date: string;
   location: string;
+  registrationUrl?: string;
   participants: number;
   thumbnail: string;
 };
@@ -115,6 +116,7 @@ export const sessions: Session[] = [
       "Students design simple AI-assisted concepts that address school or neighborhood needs.",
     date: "2026-05-09",
     location: "Eastside Community Lab",
+    registrationUrl: "#contact",
     participants: 42,
     thumbnail:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
@@ -127,6 +129,7 @@ export const sessions: Session[] = [
       "A playful introduction to web pages, digital art, and collaboration using beginner-friendly tools.",
     date: "2026-04-18",
     location: "Roosevelt Library",
+    registrationUrl: "#contact",
     participants: 36,
     thumbnail:
       "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=900&q=80",
@@ -139,6 +142,7 @@ export const sessions: Session[] = [
       "Volunteers prepare beds, paint signage, and plant herbs for a shared neighborhood garden.",
     date: "2026-05-16",
     location: "Maple Avenue Green Lot",
+    registrationUrl: "#contact",
     participants: 58,
     thumbnail:
       "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80",
@@ -151,6 +155,7 @@ export const sessions: Session[] = [
       "Teams map waste patterns and create practical recommendations for local community spaces.",
     date: "2026-06-06",
     location: "EHeros Field Office",
+    registrationUrl: "#contact",
     participants: 31,
     thumbnail:
       "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80",
@@ -163,6 +168,7 @@ export const sessions: Session[] = [
       "A family-friendly wellness session covering stress tools, breathing practice, and local resources.",
     date: "2026-05-23",
     location: "Harbor Clinic Hall",
+    registrationUrl: "#contact",
     participants: 47,
     thumbnail:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80",
@@ -175,6 +181,7 @@ export const sessions: Session[] = [
       "Participants learn affordable meal planning, label reading, and simple recipes for busy weeks.",
     date: "2026-07-11",
     location: "North Market Kitchen",
+    registrationUrl: "#contact",
     participants: 29,
     thumbnail:
       "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80",
@@ -187,6 +194,7 @@ export const sessions: Session[] = [
       "Youth photographers practice consent-based portrait sessions and visual storytelling.",
     date: "2026-06-20",
     location: "Founders Plaza",
+    registrationUrl: "#contact",
     participants: 24,
     thumbnail:
       "https://images.unsplash.com/photo-1522206024047-9c925421675b?auto=format&fit=crop&w=900&q=80",
@@ -199,6 +207,7 @@ export const sessions: Session[] = [
       "Students meet professionals across technology, health, trades, arts, and public service.",
     date: "2026-05-30",
     location: "Central High Commons",
+    registrationUrl: "#contact",
     participants: 64,
     thumbnail:
       "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80",
@@ -260,7 +269,7 @@ export const teamMembers = [
 ];
 
 export const upcomingSessions = sessions
-  .filter((session) => new Date(session.date) >= new Date("2026-04-26"))
+  .filter((session) => new Date(session.date) >= new Date())
   .sort((a, b) => a.date.localeCompare(b.date))
   .slice(0, 2);
 
