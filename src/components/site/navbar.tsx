@@ -21,8 +21,8 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-border/70 bg-background/80 sticky top-0 z-50 border-b backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <header className="border-border/70 bg-background/80 sticky top-0 z-50 h-[var(--nav-height)] border-b backdrop-blur-xl">
+      <nav className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="group flex items-center gap-3"

@@ -22,6 +22,7 @@
 }
 
 :root {
+  --nav-height: 4.5rem;
   --background: #fbf7ef;
   --foreground: #13231d;
   --card: #fffdf8;

@@ -35,19 +35,19 @@ export default function HomePage() {
   return (
     <main>
       <section
-        className="grain relative isolate min-h-[calc(100vh-4.75rem)] overflow-hidden bg-cover bg-center"
+        className="grain relative isolate h-[calc(100svh_-_var(--nav-height))] overflow-hidden bg-cover bg-center"
         style={{
           backgroundImage:
             "linear-gradient(90deg, rgba(5,16,13,0.86), rgba(5,16,13,0.46)), url('https://images.unsplash.com/photo-1651514645933-c26e0eb4ace3?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_18%,rgba(245,210,123,0.28),transparent_22rem)]" />
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4.75rem)] max-w-7xl items-center px-4 py-24 sm:px-6 lg:px-8">
-          <Reveal className="max-w-4xl text-white">
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
+          <Reveal className="max-w-3xl text-white">
             <p className="mb-5 inline-flex rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm font-bold tracking-[0.24em] uppercase backdrop-blur">
               Volunteer-powered community impact
             </p>
-            <h1 className="font-display text-5xl leading-[0.95] font-black tracking-tight sm:text-7xl lg:text-8xl">
+            <h1 className="font-display text-[clamp(2.75rem,7vw,5.25rem)] leading-[1.02] font-black tracking-tight">
               EHeros turns local care into lasting community projects.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl">
